@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contact Us | Virtual Tribal Tourism</title>
+    <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
+    <meta http-equiv="Pragma" content="no-cache">
+    <meta http-equiv="Expires" content="0">
+    <meta name="description" content="Get in touch with Virtual Tribal Tourism. Contact us for inquiries, support, or to learn more about our tribal heritage projects.">
+    <link rel="canonical" href="https://virtual-tribal-tourism-5bb9n58zp.vercel.app/contact.html">
+    <meta name="robots" content="index, follow">
+    
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;700;800&family=Playfair+Display:wght@700&display=swap" rel="stylesheet">
+    
+    <!-- CSS link -->
+    <link rel="stylesheet" href="contact_style.css">
+</head>
+<body>
+
+    <!-- Header Section -->
+    <header class="contact-hero">
+        <a href="index.html" class="top-back-btn">← Back</a>
+        <div class="container">
+            <h1>Happy to help you!</h1>
+            <p>Feel free to reach out to us anytime.</p>
+        </div>
+    </header>
+
+    <main class="container">
+        <div class="contact-grid">
+            
+            <!-- 1. Contact Information Column -->
+            <aside class="info-card">
+                <h2>Get in Touch</h2>
+                
+                <div class="contact-method">
+                    <label>Email Address</label>
+                    <div class="val" id="displayEmail">Loading...</div>
+                </div>
+
+                <div class="contact-method">
+                    <label>Phone Number</label>
+                    <div class="val" id="displayPhone">Loading...</div>
+                </div>
+
+                <div class="contact-method">
+                    <label>Location</label>
+                    <div class="val" id="displayLocation">Loading...</div>
+                </div>
+            </aside>
+
+            <!-- 2. Contact Form Column -->
+            <section class="form-card">
+                <form id="contactForm">
+                    <div class="form-group">
+                        <label for="name">Full Name</label>
+                        <input type="text" id="name" name="name" class="form-input" placeholder="Enter your name" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="email">Email Address</label>
+                        <input type="email" id="email" name="email" class="form-input" placeholder="Enter your email" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="phone">Phone Number</label>
+                        <input type="tel" id="phone" name="phone" class="form-input" placeholder="Enter your phone number" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="message">Your Message</label>
+                        <textarea id="message" name="message" class="form-input" rows="5" placeholder="How can we help you?"></textarea>
+                    </div>
+
+                    <button type="button" class="submit-btn" id="submitBtn" onclick="handleFormSubmit()">Send Message →</button>
+                </form>
+            </section>
+
+        </div>
+    </main>
+
+    <!-- Creative Success Overlay -->
+    <div class="success-overlay" id="contactSuccess">
+        <div class="success-card">
+            <div class="success-icon-wrapper">
+                <div class="checkmark-circle">
+                    <div class="checkmark draw"></div>
+                </div>
+            </div>
+            <h2>Submitted!</h2>
+            <p>Your inquiry is submitted, we will contact you soon!</p>
+            <button class="close-success-btn" onclick="window.location.href='index.html'">Return Home</button>
+        </div>
+    </div>
+
+    <!-- Supabase SDK & Config -->
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+    <script src="payment_config.js"></script>
+
+    <script>
+        // Supabase Client (Global Scope)
+        let supabaseClient = null;
+
+        function initSupabase() {
+            try {
+                if (typeof window.supabase !== 'undefined' && typeof PAYMENT_CONFIG !== 'undefined') {
+                    supabaseClient = window.supabase.createClient(PAYMENT_CONFIG.SUPABASE.URL, PAYMENT_CONFIG.SUPABASE.ANON_KEY);
+                    console.log("Contact Page: Supabase Initialized");
+                }
+            } catch (e) {
+                console.error("Contact Page: Initialization Error:", e);
+            }
+        }
+
+        async function handleFormSubmit() {
+            console.log("Contact Page: Submit function called");
+            
+            const btn = document.getElementById('submitBtn');
+            const originalContent = btn.innerHTML;
+            
+            try {
+                // Check if Supabase is initialized
+                if (!supabaseClient) {
+                    initSupabase();
+                    if (!supabaseClient) throw new Error("Database connection not ready. Check payment_config.js");
+                }
+
+                // Get Field Values
+                const name = document.getElementById('name').value.trim();
+                const email = document.getElementById('email').value.trim();
+                const phone = document.getElementById('phone').value.trim();
+                const message = document.getElementById('message').value.trim();
+
+                // Basic Validation
+                if (!name || !email || !message) {
+                    alert("Please fill in all required fields (Name, Email, Message).");
+                    return;
+                }
+
+                // UI: Show loading state
+                btn.innerHTML = '<span class="loading-spinner"></span> Sending...';
+                btn.disabled = true;
+
+                // Save to Supabase
+                console.log("Contact Page: Sending data to Supabase...");
+                const { error } = await supabaseClient.from('contacts').insert([
+                    { 
+                        name: name, 
+                        email: email, 
+                        phone: phone, 
+                        message: message, 
+                        status: 'New',
+                        created_at: new Date().toISOString()
+                    }
+                ]);
+                
+                if (error) {
+                    console.error("Supabase Insertion Error:", error);
+                    throw error;
+                }
+
+                console.log("Contact Page: Submission successful");
+
+                // Success Actions
+                document.getElementById('contactSuccess').classList.add('active');
+                document.getElementById('contactForm').reset();
+                
+            } catch (err) {
+                console.error("Contact Page: Submission Error:", err);
+                alert("Submission Failed: " + (err.message || "Unknown error occurred"));
+                
+                // Reset button
+                btn.innerHTML = originalContent;
+                btn.disabled = false;
+            }
+        }
+
+        document.addEventListener('DOMContentLoaded', () => {
+            initSupabase();
+
+            // Populate General Info
+            if (typeof PAYMENT_CONFIG !== 'undefined') {
+                const displayEmail = document.getElementById('displayEmail');
+                const displayPhone = document.getElementById('displayPhone');
+                const displayLocation = document.getElementById('displayLocation');
+                
+                if (displayEmail) displayEmail.innerText = PAYMENT_CONFIG.GENERAL.EMAIL;
+                if (displayPhone) displayPhone.innerText = PAYMENT_CONFIG.GENERAL.PHONE;
+                if (displayLocation) displayLocation.innerText = PAYMENT_CONFIG.GENERAL.LOCATION;
+            }
+        });
+    </script>
+</body>
+</html>
