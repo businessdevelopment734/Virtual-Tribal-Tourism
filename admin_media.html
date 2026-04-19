@@ -85,11 +85,8 @@
         <main class="admin-main">
             <div class="header-top">
                 <div class="breadcrumb">
-                    <button class="mobile-toggle" onclick="toggleSidebar()">☰</button>
-                    <div>
-                        <h2 id="viewTitle">Media Control</h2>
-                        <p class="breadcrumb-sub">Manage platform assets and repository</p>
-                    </div>
+                    <h2 id="viewTitle">Media Control</h2>
+                    <p class="breadcrumb-sub">Manage platform assets and repository</p>
                 </div>
                 <div class="header-actions">
                     <button class="btn-action btn-action-outline" onclick="showUploadModal()">+ Upload New Asset</button>
@@ -104,22 +101,20 @@
                         <span id="statMedia">0</span> Assets
                     </div>
                 </div>
-                <div class="table-responsive">
-                    <table>
-                        <thead>
-                            <tr>
-                                <th>Asset Name</th>
-                                <th>Category</th>
-                                <th>Type</th>
-                                <th>Status</th>
-                                <th>Control</th>
-                            </tr>
-                        </thead>
-                        <tbody id="mediaBody">
-                            <!-- Populated by admin_script.js -->
-                        </tbody>
-                    </table>
-                </div>
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Asset Name</th>
+                            <th>Category</th>
+                            <th>Type</th>
+                            <th>Status</th>
+                            <th>Control</th>
+                        </tr>
+                    </thead>
+                    <tbody id="mediaBody">
+                        <!-- Populated by admin_script.js -->
+                    </tbody>
+                </table>
             </div>
         </main>
     </div>

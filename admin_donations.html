@@ -85,11 +85,8 @@
         <main class="admin-main">
             <div class="header-top">
                 <div class="breadcrumb">
-                    <button class="mobile-toggle" onclick="toggleSidebar()">☰</button>
-                    <div>
-                        <h2 id="viewTitle">Donation Management</h2>
-                        <p class="breadcrumb-sub">Monitor and verify all contributions</p>
-                    </div>
+                    <h2 id="viewTitle">Donation Management</h2>
+                    <p class="breadcrumb-sub">Monitor and verify all contributions</p>
                 </div>
                 <div class="header-actions">
                     <button class="btn-action" onclick="exportDonationsToCSV()">Export CSV</button>
@@ -105,22 +102,20 @@
                         <span class="status-dot">🟢</span> Verified Live
                     </div>
                 </div>
-                <div class="table-responsive">
-                    <table>
-                        <thead>
-                            <tr>
-                                <th>Donor</th>
-                                <th>Amount</th>
-                                <th>Timestamp</th>
-                                <th>Verification</th>
-                                <th>Reference</th>
-                            </tr>
-                        </thead>
-                        <tbody id="transactionBody">
-                            <!-- Populated by admin_script.js -->
-                        </tbody>
-                    </table>
-                </div>
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Donor</th>
+                            <th>Amount</th>
+                            <th>Timestamp</th>
+                            <th>Verification</th>
+                            <th>Reference</th>
+                        </tr>
+                    </thead>
+                    <tbody id="transactionBody">
+                        <!-- Populated by admin_script.js -->
+                    </tbody>
+                </table>
             </div>
         </main>
     </div>

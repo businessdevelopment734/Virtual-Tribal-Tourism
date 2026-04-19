@@ -60,11 +60,8 @@
         <main class="admin-main">
             <div class="header-top">
                 <div class="breadcrumb">
-                    <button class="mobile-toggle" onclick="toggleSidebar()">☰</button>
-                    <div>
-                        <h2>User Inquiries</h2>
-                        <p class="breadcrumb-sub">Manage messages from the contact form</p>
-                    </div>
+                    <h2>User Inquiries</h2>
+                    <p class="breadcrumb-sub">Manage messages from the contact form</p>
                 </div>
                 <div class="header-actions">
                     <button class="btn-refresh" onclick="loadContacts()">🔄 Refresh List</button>
@@ -73,26 +70,24 @@
 
             <div class="content-card">
                 <div class="table-container">
-                        <div class="table-responsive">
-                            <table class="admin-table">
-                                <thead>
-                                    <tr>
-                                        <th>Date</th>
-                                        <th>Name</th>
-                                        <th>Email</th>
-                                        <th>Phone</th>
-                                        <th>Message</th>
-                                        <th>Status</th>
-                                        <th>Actions</th>
-                                    </tr>
-                                </thead>
-                                <tbody id="contactsTableBody">
-                                    <tr>
-                                        <td colspan="7" class="text-center">Initializing secure connection...</td>
-                                    </tr>
-                                </tbody>
-                            </table>
-                        </div>
+                    <table class="admin-table">
+                        <thead>
+                            <tr>
+                                <th>Date</th>
+                                <th>Name</th>
+                                <th>Email</th>
+                                <th>Phone</th>
+                                <th>Message</th>
+                                <th>Status</th>
+                                <th>Actions</th>
+                            </tr>
+                        </thead>
+                        <tbody id="contactsTableBody">
+                            <tr>
+                                <td colspan="7" class="text-center">Initializing secure connection...</td>
+                            </tr>
+                        </tbody>
+                    </table>
                 </div>
             </div>
         </main>

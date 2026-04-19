@@ -12,29 +12,7 @@ initSupabase(); // Initialize immediately when script is loaded
 
 document.addEventListener('DOMContentLoaded', () => {
     checkAuthStatus();
-    
-    // Check if on mobile and sidebar exists
-    const sidebar = document.querySelector('.admin-sidebar');
-    if (sidebar) {
-        // Close sidebar when clicking menu links on mobile
-        const sidebarLinks = sidebar.querySelectorAll('.menu-link');
-        sidebarLinks.forEach(link => {
-            link.addEventListener('click', () => {
-                if (window.innerWidth <= 1024) {
-                    sidebar.classList.remove('active');
-                }
-            });
-        });
-    }
 });
-
-// --- Sidebar Toggle for Mobile ---
-window.toggleSidebar = () => {
-    const sidebar = document.querySelector('.admin-sidebar');
-    if (sidebar) {
-        sidebar.classList.toggle('active');
-    }
-};
 
 function initSupabase() {
     try {

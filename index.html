@@ -10,33 +10,10 @@
     <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
     <meta http-equiv="Pragma" content="no-cache">
     <meta http-equiv="Expires" content="0">
-    <!-- Google Fonts with Swap -->
-    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;700;800&family=Playfair+Display:ital,wght@0,700;1,700&display=swap" rel="stylesheet">
-    
-    <link rel="canonical" href="https://virtual-tribal-tourism-5bb9n58zp.vercel.app/">
-    <meta name="robots" content="index, follow">
-
-    <!-- Structured Data for SEO -->
-    <script type="application/ld+json">
-    {
-      "@context": "https://schema.org",
-      "@type": "NonProfitOrganization",
-      "name": "Virtual Tribal Tourism - Iruliga Tribe",
-      "url": "https://virtual-tribal-tourism-5bb9n58zp.vercel.app/",
-      "logo": "https://virtual-tribal-tourism-5bb9n58zp.vercel.app/gardencitylogo.jpeg",
-      "description": "A cultural preservation initiative for the Iruliga Tribe. Experience traditions, music, and rituals through virtual tourism.",
-      "contactPoint": {
-        "@type": "ContactPoint",
-        "telephone": "+91-80-12345678",
-        "contactType": "Information and Support",
-        "email": "info@gardencity.university"
-      }
-    }
-    </script>
 
     <!-- Open Graph / Facebook -->
     <meta property="og:type" content="website">
-    <meta property="og:url" content="https://virtual-tribal-tourism-5bb9n58zp.vercel.app/">
+    <meta property="og:url" content="https://virtualtribaltourism.gcu.ac.in/">
     <meta property="og:title" content="Virtual Tribal Tourism | Iruliga Tribe">
     <meta property="og:description"
         content="Discover the rich heritage and traditions of the Iruliga people. Preservation through tourism.">
@@ -51,31 +28,26 @@
     <!-- CSS link -->
     <link rel="stylesheet" href="style.css">
 
-    <!-- CSS link -->
-    <link rel="stylesheet" href="style.css">
+    <!-- Config & Database -->
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+    <script src="payment_config.js"></script>
 
     <!-- Smooth Font Loading -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-
-    <!-- Performance: Preload Video Background -->
-    <link rel="preload" href="intro.mp4" as="video" type="video/mp4">
 </head>
 
 <body>
 
-    <!-- Skip to Main Content (Accessibility) -->
-    <a href="#main-content" class="skip-link">Skip to main content</a>
-
     <!-- On Load Modal Popup -->
     <div class="modal-overlay" id="welcomeModal">
         <div class="modal">
-            <button class="modal-close" onclick="closeModal()" aria-label="Close welcome modal">&times;</button>
+            <button class="modal-close" onclick="closeModal()">&times;</button>
             <div class="modal-logos">
                 <a href="https://www.gardencity.university/" target="_blank" rel="noopener"><img
-                        src="gardencitylogo.jpeg" alt="Garden City University" width="80" height="80"></a>
+                        src="gardencitylogo.jpeg" alt="Garden City University"></a>
                 <a href="https://www.kscst.org.in/spp.html" target="_blank" rel="noopener"><img src="kscst_eng_logo.jpg"
-                        alt="KSCST Logo" width="80" height="80"></a>
+                        alt="KSCST Logo"></a>
             </div>
             <h2>Welcome to Virtual Tribal Tourism</h2>
             <p>Explore the Iruliga Tribes. Support tribal welfare by donating via the link below. Your contribution
@@ -89,23 +61,23 @@
         <div class="nav-content">
             <div class="logos">
                 <a href="https://www.gardencity.university/" target="_blank" rel="noopener"><img
-                        src="gardencitylogo.jpeg" alt="GCU Logo" width="40" height="40"></a>
+                        src="gardencitylogo.jpeg" alt="GCU Logo"></a>
                 <a href="https://www.kscst.org.in/spp.html" target="_blank" rel="noopener"><img src="kscst_eng_logo.jpg"
-                        alt="KSCST Logo" width="40" height="40"></a>
+                        alt="KSCST Logo"></a>
                 <span class="brand-name">Virtual Tribal Tourism</span>
             </div>
 
-            <div class="menu-toggle" onclick="toggleMenu()" aria-label="Toggle navigation menu">
+            <div class="menu-toggle" onclick="toggleMenu()">
                 <span></span>
                 <span></span>
                 <span></span>
             </div>
 
             <ul class="nav-links" id="navLinks">
-                <li class="close-li"><button class="menu-close" onclick="toggleMenu()" aria-label="Close navigation menu">&times;</button></li>
+                <li class="close-li"><button class="menu-close" onclick="toggleMenu()">&times;</button></li>
                 <li><a href="#home">Home</a></li>
                 <li class="dropdown">
-                    <a href="#explore" class="dropbtn">Explore <svg class="chevron-icon" viewBox="0 0 24 24">
+                    <a class="dropbtn">Explore <svg class="chevron-icon" viewBox="0 0 24 24">
                             <path d="M7 10l5 5 5-5z" />
                         </svg></a>
                     <ul class="dropdown-content">
@@ -124,13 +96,11 @@
         </div>
     </nav>
 
-    <main id="main-content">
-        <!-- Hero Section -->
+    <!-- Hero Section -->
     <section class="hero" id="home">
         <div class="hero-bg">
-            <video autoplay muted loop poster="https://images.unsplash.com/photo-1511497584788-876760111969?auto=format&fit=crop&q=80&w=1600" class="bg-video" title="Introductory video of the Iruliga Tribe" playsinline webkit-playsinline>
+            <video autoplay muted loop webkit-playsinline class="bg-video">
                 <source src="intro.mp4" type="video/mp4">
-                <track kind="captions" src="" srclang="en" label="English">
                 Your browser does not support the video tag.
             </video>
         </div>
@@ -405,101 +375,7 @@
             </div>
         </div>
     </section>
- <!-- Donation Section -->
-    <section id="donate" class="donation">
-        <div class="container">
-            <div class="donation-wrapper">
-                <!-- Form Side -->
-                <div class="donation-form-card">
-                    <div class="form-header">
-                        <h2>Make a Donation</h2>
-                        <div class="form-badge">Secure • Tax Exempt • Every rupee reaches the field</div>
-                    </div>
 
-                    <form id="donationForm">
-                        <div class="form-group">
-                            <label>Full Name</label>
-                            <input type="text" placeholder="prasanth" required>
-                        </div>
-
-                        <div class="form-row">
-                            <div class="form-group">
-                                <label>Email</label>
-                                <input type="email" placeholder="info@helparea.org" required>
-                            </div>
-                            <div class="form-group">
-                                <label>Phone</label>
-                                <input type="tel" placeholder="98765 43210" required>
-                            </div>
-                        </div>
-
-                        <div class="form-group">
-                            <label>Select Amount</label>
-                            <div class="amount-presets">
-                                <button type="button" class="amount-btn" onclick="setAmount(500)">₹500</button>
-                                <button type="button" class="amount-btn active"
-                                    onclick="setAmount(1000)">₹1,000</button>
-                                <button type="button" class="amount-btn" onclick="setAmount(5000)">₹5,000</button>
-                                <button type="button" class="amount-btn" onclick="setAmount(10000)">₹10,000</button>
-                                <button type="button" class="amount-btn" onclick="toggleCustomAmount()">Custom</button>
-                            </div>
-                            <input type="number" id="customAmountInput" placeholder="Or enter amount (₹)"
-                                class="custom-amount-field">
-                        </div>
-
-                        <div class="form-group">
-                            <label>Donate Towards</label>
-                            <select title="Choose a donation cause">
-                                <option value="">Choose a cause (optional)</option>
-                                <option value="education">Tribal Education</option>
-                                <option value="culture">Cultural Preservation</option>
-                                <option value="livelihood">Community Livelihood</option>
-                            </select>
-                        </div>
-
-                        <div class="form-group">
-                            <label>Message (optional)</label>
-                            <textarea placeholder="Share your thoughts…"></textarea>
-                        </div>
-
-                        <div class="payment-flow-container">
-                            <!-- Step A: Immediate Payment -->
-                            <div class="step-card">
-                                <div class="step-icon">1</div>
-                                <div class="step-body">
-                                    <h4>Make Payment</h4>
-                                    <p>Open your UPI app to transfer the chosen amount.</p>
-                                    <div class="upi-display-box">
-                                        <span id="upiIdText">8248678722@nyes</span>
-                                        <button type="button" class="copy-btn" onclick="copyUPI()">Copy ID</button>
-                                    </div>
-                                    <button type="button" class="pay-app-btn" onclick="openPaymentApp()">
-                                        <span>📱</span> Open UPI App Now
-                                    </button>
-                                </div>
-                            </div>
-
-                            <!-- Step B: Verification -->
-                            <div class="step-card">
-                                <div class="step-icon">2</div>
-                                <div class="step-body">
-                                    <h4>Verify Transaction</h4>
-                                    <p>Paste the 12-digit ID from your payment confirmation.</p>
-                                    <div class="form-group mini">
-                                        <input type="text" id="txnId" placeholder="Ref No. (12 digits)" maxlength="12"
-                                            required title="Transaction ID">
-                                    </div>
-                                    <button type="submit" class="submit-proof-btn">Verify & Complete →</button>
-                                </div>
-                            </div>
-                        </div>
-                    </form>
-                </div>
-
-            </div>
-        </div>
-        </div>
-    </section>
     <!-- Voices of the Tribe Section -->
     <section class="testimonials-section" id="testimonials">
         <div class="container">
@@ -529,7 +405,7 @@
         </div>
     </section>
 
-   
+    
 
     <!-- Footer -->
     <footer>
@@ -547,7 +423,7 @@
                 </div>
 
                 <div class="footer-links">
-                    <h3>Quick Links</h3>
+                    <h4>Quick Links</h4>
                     <ul>
                         <li><a href="#home">Home</a></li>
                         <li><a href="about.html">About Us</a></li>
@@ -557,7 +433,7 @@
                 </div>
 
                 <div class="footer-links">
-                    <h3>Contact Us</h3>
+                    <h4>Contact Us</h4>
                     <ul class="contact-list">
                         <li>
                             <svg class="contact-icon" viewBox="0 0 24 24">
@@ -577,30 +453,30 @@
                 </div>
 
                 <div class="footer-social">
-                    <h3>Follow Our Journey</h3>
+                    <h4>Follow Our Journey</h4>
                     <div class="social-icons">
-                        <a href="https://instagram.com/" id="socialInsta" class="social-btn" target="_blank"
+                        <a href="#" id="socialInsta" class="social-btn" target="_blank"
                             rel="noopener" aria-label="Instagram">
                             <svg viewBox="0 0 24 24">
                                 <path
                                     d="M7.8 2h8.4C19.4 2 22 4.6 22 7.8v8.4a5.8 5.8 0 0 1-5.8 5.8H7.8C4.6 22 2 19.4 2 16.2V7.8A5.8 5.8 0 0 1 7.8 2m-.2 2A3.6 3.6 0 0 0 4 7.6v8.8A3.6 3.6 0 0 0 7.6 20h8.8a3.6 3.6 0 0 0 3.6-3.6V7.6A3.6 3.6 0 0 0 16.4 4H7.6m4.4 3a5 5 0 0 1 5 5 5 5 0 0 1-5 5 5 5 0 0 1-5-5 5 5 0 0 1 5-5m0 2a3 3 0 0 0-3 3 3 3 0 0 0 3 3 3 3 0 0 0 3-3 3 3 0 0 0-3-3m5-2.5a1.25 1.25 0 0 1 1.25 1.25A1.25 1.25 0 0 1 17 9.5a1.25 1.25 0 0 1-1.25-1.25A1.25 1.25 0 0 1 17 6.5z" />
                             </svg>
                         </a>
-                        <a href="https://youtube.com/" id="socialYoutube" class="social-btn"
+                        <a href="#" id="socialYoutube" class="social-btn"
                             target="_blank" rel="noopener" aria-label="YouTube">
                             <svg viewBox="0 0 24 24">
                                 <path
                                     d="M10 15l5.19-3L10 9v6m11.56-7.83c.13.47.22 1.1.28 1.9.07.8.1 1.49.1 2.09L22 12c0 2.19-.16 3.8-.44 4.83-.25.9-.83 1.48-1.73 1.73-.47.13-1.33.22-2.65.28-1.3.07-2.49.1-3.59.1L12 19c-4.19 0-6.8-.16-7.83-.44-.9-.25-1.48-.83-1.73-1.73-.13-.47-.22-1.1-.28-1.9-.07-.8-.1-1.49-.1-2.09L2 12c0-2.19.16-3.8.44-4.83.25-.9.83-1.48 1.73-1.73.47-.13 1.33-.22 2.65-.28 1.3-.07 2.49-.1 3.59-.1L12 5c4.19 0 6.8.16 7.83.44.9.25 1.48.83 1.73 1.73z" />
                             </svg>
                         </a>
-                        <a href="https://linkedin.com/" id="socialLinkedin" class="social-btn"
+                        <a href="#" id="socialLinkedin" class="social-btn"
                             target="_blank" rel="noopener" aria-label="LinkedIn">
                             <svg viewBox="0 0 24 24">
                                 <path
                                     d="M19 3a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h14m-.5 15.5v-5.3a3.26 3.26 0 0 0-3.26-3.26c-.85 0-1.84.52-2.32 1.3v-1.11h-2.79v8.37h2.79v-4.93c0-.77.62-1.4 1.39-1.4a1.4 1.4 0 0 1 1.4 1.4v4.93h2.79M6.88 8.56a1.68 1.68 0 0 0 1.68-1.68c0-.93-.75-1.69-1.68-1.69a1.69 1.69 0 0 0-1.69 1.69c0 .93.76 1.68 1.69 1.68m1.39 9.94v-8.37H5.5v8.37h2.77z" />
                             </svg>
                         </a>
-                        <a href="https://facebook.com/" id="socialFB" class="social-btn" target="_blank"
+                        <a href="#" id="socialFB" class="social-btn" target="_blank"
                             rel="noopener" aria-label="Facebook">
                             <svg viewBox="0 0 24 24">
                                 <path
@@ -672,7 +548,7 @@
         </div>
     </div>
 
-    <!-- External Dependencies & Config (Moved here to eliminate render-blocking) -->
+    <!-- External Dependencies -->
     <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
     <script src="payment_config.js"></script>
     <script src="script.js"></script>
