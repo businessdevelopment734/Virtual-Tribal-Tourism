@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Media Control | VTT Admin</title>
+    
+    <!-- External Assets -->
+    <link rel="stylesheet" href="admin_style.css">
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+    <script src="payment_config.js"></script>
+</head>
+<body>
+
+    <!-- Redesigned Authentication Overlay -->
+    <div id="authOverlay">
+        <div class="login-box">
+            <div class="login-logo">🌿</div>
+            <h1>Secure Portal</h1>
+            <p>Administrative authentication required</p>
+            
+            <div class="input-group">
+                <label>Admin Password</label>
+                <input type="password" id="passInput" class="login-input" placeholder="••••••••" autofocus title="Admin Password">
+            </div>
+            
+            <button class="unlock-btn" onclick="authenticate()">Unlock Dashboard</button>
+        </div>
+    </div>
+
+    <!-- Main Dashboard Application -->
+    <div class="dashboard-container">
+        
+        <!-- Sidebar Navigation -->
+        <aside class="admin-sidebar">
+            <div class="sidebar-header">
+                <div class="vtt-icon">🌿</div>
+                <div class="sidebar-brand-name">VTT Control</div>
+            </div>
+
+            <ul class="sidebar-menu">
+                <li class="menu-item">
+                    <a href="admin.html" class="menu-link">
+                        <span class="icon">📊</span> Overview
+                    </a>
+                </li>
+                <li class="menu-item">
+                    <a href="admin_donations.html" class="menu-link">
+                        <span class="icon">💰</span> Donations
+                    </a>
+                </li>
+                <li class="menu-item">
+                    <a href="admin_media.html" class="menu-link active">
+                        <span class="icon">🎬</span> Media Control
+                    </a>
+                </li>
+                <li class="menu-item">
+                    <a href="admin_contacts.html" class="menu-link">
+                        <span class="icon">✉️</span> Inquiries
+                    </a>
+                </li>
+                <li class="menu-item">
+                    <a href="admin_testimonials.html" class="menu-link">
+                        <span class="icon">🗣️</span> Voices (Testimonials)
+                    </a>
+                </li>
+                <li class="menu-item">
+                    <a href="admin_settings.html" class="menu-link">
+                        <span class="icon">⚙️</span> Settings
+                    </a>
+                </li>
+                <li class="menu-item menu-item-spacer">
+                    <a href="index.html" class="menu-link">
+                        <span class="icon">🏠</span> Live Website
+                    </a>
+                </li>
+            </ul>
+
+            <a href="javascript:void(0)" onclick="logout()" class="menu-link logout-link">
+                <span>🔒</span> Logout Session
+            </a>
+        </aside>
+
+        <!-- Main Content Area -->
+        <main class="admin-main">
+            <div class="header-top">
+                <div class="breadcrumb">
+                    <button class="mobile-toggle" onclick="toggleSidebar()">☰</button>
+                    <div>
+                        <h2 id="viewTitle">Media Control</h2>
+                        <p class="breadcrumb-sub">Manage platform assets and repository</p>
+                    </div>
+                </div>
+                <div class="header-actions">
+                    <button class="btn-action btn-action-outline" onclick="showUploadModal()">+ Upload New Asset</button>
+                </div>
+            </div>
+
+            <!-- Media Panel -->
+            <div class="content-panel">
+                <div class="panel-head">
+                    <h3>Media Repository</h3>
+                    <div class="system-status">
+                        <span id="statMedia">0</span> Assets
+                    </div>
+                </div>
+                <div class="table-responsive">
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>Asset Name</th>
+                                <th>Category</th>
+                                <th>Type</th>
+                                <th>Status</th>
+                                <th>Control</th>
+                            </tr>
+                        </thead>
+                        <tbody id="mediaBody">
+                            <!-- Populated by admin_script.js -->
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </main>
+    </div>
+
+    <!-- Upload Media Modal -->
+    <div id="uploadModal" class="admin-modal">
+        <form class="modal-content" onsubmit="handleMediaUpload(event)">
+            <h3>🎬 Add New Asset</h3>
+            
+            <div class="form-group">
+                <label for="uploadTitle">Title</label>
+                <input type="text" id="uploadTitle" placeholder="Traditional Dance (2024)" required title="Asset Title">
+            </div>
+
+            <div class="form-group">
+                <label for="uploadCategory">Category</label>
+                <select id="uploadCategory" title="Asset Category">
+                    <option value="Music">Music</option>
+                    <option value="Rituals">Rituals</option>
+                    <option value="Food">Food</option>
+                    <option value="Beverages">Beverages</option>
+                    <option value="Attire">Attire</option>
+                </select>
+            </div>
+
+            <div class="form-group">
+                <label for="uploadType">Type</label>
+                <select id="uploadType" title="Asset Type">
+                    <option value="YouTube Video">YouTube Video</option>
+                    <option value="Photo Gallery">Photo Gallery</option>
+                    <option value="VR Experience">VR Experience</option>
+                </select>
+            </div>
+
+            <div class="form-group">
+                <label for="uploadUrl">Source URL / ID</label>
+                <input type="text" id="uploadUrl" placeholder="https://youtube.com/watch?v=..." required title="Source URL">
+            </div>
+
+            <div class="modal-actions">
+                <button type="button" class="btn-action" onclick="hideUploadModal()">Cancel</button>
+                <button type="submit" class="btn-action btn-action-primary">Save Asset</button>
+            </div>
+        </form>
+    </div>
+
+    <script src="admin_script.js"></script>
+</body>
+</html>
