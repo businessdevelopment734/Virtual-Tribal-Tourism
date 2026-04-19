@@ -59,14 +59,13 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 
     <!-- Performance: Preload Video Background -->
-    <!-- Performance: Preload Poster Image (Instant LCP) -->
-    <link rel="preload" href="https://images.unsplash.com/photo-1511497584788-876760111969?auto=format&fit=crop&q=80&w=1600" as="image">
-
+    <link rel="preload" href="intro.mp4" as="video" type="video/mp4">
 </head>
 
 <body>
 
-
+    <!-- Skip to Main Content (Accessibility) -->
+    <a href="#main-content" class="skip-link">Skip to main content</a>
 
     <!-- On Load Modal Popup -->
     <div class="modal-overlay" id="welcomeModal">
@@ -406,37 +405,7 @@
             </div>
         </div>
     </section>
-
-    <!-- Voices of the Tribe Section -->
-    <section class="testimonials-section" id="testimonials">
-        <div class="container">
-            <div class="section-title">
-                <h2>Voices of the Tribe</h2>
-                <p>Stories and heritage shared by the Iruliga community and our supporters.</p>
-            </div>
-
-            <div class="testimonial-wrapper">
-                <button class="t-control prev" onclick="scrollTestimonials(-1)" aria-label="Previous story">
-                    <svg viewBox="0 0 24 24"><path d="M15.41 7.41L14 6l-6 6 6 6 1.41-1.41L10.83 12z"/></svg>
-                </button>
-                
-                <div class="testimonial-grid" id="testimonialContainer">
-                    <!-- Dynamic Testimonials Load Here -->
-                    <div class="loading-placeholder">Be the first to share your voice.</div>
-                </div>
-
-                <button class="t-control next" onclick="scrollTestimonials(1)" aria-label="Next story">
-                    <svg viewBox="0 0 24 24"><path d="M10 6L8.59 7.41 13.17 12l-4.58 4.59L10 18l6-6z"/></svg>
-                </button>
-            </div>
-
-            <div class="testimonial-actions">
-                <button class="cta-btn secondary-btn" onclick="openTestimonialModal()">👉 Share Your Voice</button>
-            </div>
-        </div>
-    </section>
-
-    <!-- Donation Section -->
+ <!-- Donation Section -->
     <section id="donate" class="donation">
         <div class="container">
             <div class="donation-wrapper">
@@ -531,6 +500,36 @@
         </div>
         </div>
     </section>
+    <!-- Voices of the Tribe Section -->
+    <section class="testimonials-section" id="testimonials">
+        <div class="container">
+            <div class="section-title">
+                <h2>Voices of the Tribe</h2>
+                <p>Stories and heritage shared by the Iruliga community and our supporters.</p>
+            </div>
+
+            <div class="testimonial-wrapper">
+                <button class="t-control prev" onclick="scrollTestimonials(-1)" aria-label="Previous story">
+                    <svg viewBox="0 0 24 24"><path d="M15.41 7.41L14 6l-6 6 6 6 1.41-1.41L10.83 12z"/></svg>
+                </button>
+                
+                <div class="testimonial-grid" id="testimonialContainer">
+                    <!-- Dynamic Testimonials Load Here -->
+                    <div class="loading-placeholder">Be the first to share your voice.</div>
+                </div>
+
+                <button class="t-control next" onclick="scrollTestimonials(1)" aria-label="Next story">
+                    <svg viewBox="0 0 24 24"><path d="M10 6L8.59 7.41 13.17 12l-4.58 4.59L10 18l6-6z"/></svg>
+                </button>
+            </div>
+
+            <div class="testimonial-actions">
+                <button class="cta-btn secondary-btn" onclick="openTestimonialModal()">👉 Share Your Voice</button>
+            </div>
+        </div>
+    </section>
+
+   
 
     <!-- Footer -->
     <footer>
