@@ -77,15 +77,19 @@ nav.sticky {
     display: flex;
     justify-content: space-between;
     align-items: center;
+    flex-wrap: nowrap;
     max-width: 1400px;
     margin: 0 auto;
     padding: 0 40px;
+    gap: 10px;
 }
 
 .logos {
     display: flex;
-    gap: 15px;
+    gap: 10px;
     align-items: center;
+    flex-shrink: 1;
+    min-width: 0;
 }
 
 .logos a {
@@ -110,6 +114,9 @@ nav.sticky {
     margin-left: 10px;
     letter-spacing: 0.5px;
     font-family: 'Playfair Display', serif;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
 }
 
 .nav-links {
@@ -1502,7 +1509,21 @@ footer {
     }
 
     .brand-name {
-        font-size: 1.1rem;
+        font-size: 1rem;
+        margin-left: 6px;
+        max-width: 180px;
+    }
+
+    .logos {
+        gap: 8px;
+    }
+
+    .logos img {
+        height: 38px;
+    }
+
+    .nav-content {
+        padding: 0 15px;
     }
 
     .hero-btns {
@@ -1774,17 +1795,33 @@ footer {
    MOBILE (max-width: 480px)
 ============================== */
 @media (max-width: 480px) {
-    /* Nav */
+    /* Nav — prevent second-line wrapping */
     .brand-name {
-        font-size: 0.95rem;
-        max-width: 130px;
+        font-size: 0.85rem;
+        max-width: 120px;
+        margin-left: 4px;
         white-space: nowrap;
         overflow: hidden;
         text-overflow: ellipsis;
     }
 
+    .logos {
+        gap: 5px;
+        flex-shrink: 1;
+    }
+
+    /* Hide second logo on tiny screens to save space */
+    .logos a:nth-child(2) {
+        display: none;
+    }
+
     .logos img {
-        height: 36px;
+        height: 32px;
+    }
+
+    .nav-content {
+        padding: 0 12px;
+        gap: 6px;
     }
 
     /* Hero */
