@@ -1,0 +1,5 @@
+User-agent: *
+Allow: /
+
+# Sitemap location
+Sitemap: https://virtual-tribal-tourism-5bb9n58zp.vercel.app/sitemap.xml
